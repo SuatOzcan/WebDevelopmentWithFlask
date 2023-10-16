@@ -2,6 +2,18 @@ from flask import Flask
 
 app = Flask(__name__)
 
+posts = {
+    0 : {
+        'title' : 'Hello World!',
+        'content' : 'This is my first blog post.'
+    }
+}
+
+@app.route('/post/<int:post_id>') #/post/0
+def post_id(post_id):
+    post = posts.get(post_id)
+    return (f'Post {post["title"]}, content: \n\n {post["content"]}')
+
 @app.route('/')
 def home():
     return ('Hello World!')
