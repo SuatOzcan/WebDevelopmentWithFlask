@@ -12,9 +12,9 @@ posts = {
 
 @app.route('/post/<int:post_id>') #/post/0
 def post_id(post_id):
-    post = posts.get(post_id)
+    #post = posts.get(post_id)
     #return (f'Post {post["title"]}, content: \n\n {post["content"]}')
-    return render_template('post.html')
+    return render_template('post.html', post = posts.get(post_id))
 
 @app.route('/')
 def home():
