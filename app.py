@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, render_template
+#HTML files should be in 'templates' folder.
 
 app = Flask(__name__)
 
@@ -12,7 +13,8 @@ posts = {
 @app.route('/post/<int:post_id>') #/post/0
 def post_id(post_id):
     post = posts.get(post_id)
-    return (f'Post {post["title"]}, content: \n\n {post["content"]}')
+    #return (f'Post {post["title"]}, content: \n\n {post["content"]}')
+    return render_template('post.html')
 
 @app.route('/')
 def home():
