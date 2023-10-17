@@ -1,6 +1,11 @@
 <DOCTYPE! html>
     <head></head>
     <body>
+        <a href="{{url_for('home', posts = posts)}}">Home</a>
+        <a href="{{url_for('create')}}">Create</a>
+        {%for post_id, post in posts.items()%}
+        <a href="{{url_for('post',post_id=post_id)}}">Post{{post_id}}</a>
+        {%endfor%}
         {%block content%}
 
         {%endblock%}
