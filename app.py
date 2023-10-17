@@ -29,10 +29,12 @@ def form():
     return render_template('create.jinja2')
 
 #127.0.0.1:5000/post/create?title=placeholder&content=anotherplaceholder
-@app.route('/post/create')
+@app.route('/post/create', methods = ['POST'])
 def create():
-    title = request.args.get('title')
-    content = request.args.get('content')
+    # title = request.args.get('title')
+    # content = request.args.get('content')
+    title = request.form.get('title')
+    content = request.form.get('content')
     post_id = len(posts)
     posts[post_id] = {'id' : post_id, 'title' : title, 'content' : content}
     return redirect(url_for('post', post_id = post_id))
